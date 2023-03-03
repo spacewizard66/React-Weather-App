@@ -10,6 +10,7 @@ function Weather() {
 	const [error, setError] = useState();
 
 	const [animate, setAnimate] = useState(false);
+	const [animate2, setAnimate2] = useState(false);
 
 	// Uses the "useEffect()" React hook to initialize
 	// the "unit" variable to be Fahrenheit (true)
@@ -66,9 +67,10 @@ function Weather() {
 					data.main ? (
 						<button
 							className="unit-button"
+							id={animate2 ? "animated-spin" : ""}
 							type="button"
-							onClick={() => (flip(unit))}
-							/* onAnimationEnd={() => } */
+							onClick={() => {flip(unit); setAnimate2(true);}}
+							onAnimationEnd={() => setAnimate2(false)}
 						>
 							{unit ? "°C" : "°F"}
 						</button>
